@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Guide = () => {
+const Budget = () => {
   return (
     <View style={styles.container}>
       <Text>Home Screen</Text>
@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#fefaea'
   },
 });
 
-export default Guide;
+export default Budget;
