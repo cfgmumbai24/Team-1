@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 
 export default function CommunityPage() {
   return (
@@ -6,7 +6,7 @@ export default function CommunityPage() {
         <div className='col-3'></div>
         <div className='col col-6 text-center'>
         <div className='card border border-bold border-rounded p-5'>
-            <span className='sub-heading'>"bjsdcbhbejnzbnxbsjehbzbcmnnjwhebmzhbc  dcbseubkbdjcbiejcbsmdchsbm"</span>
+            <span className='sub-heading'>&quot;bjsdcbhbejnzbnxbsjehbzbcmnnjwhebmzhbc  dcbseubkbdjcbiejcbsmdchsbm&quot;</span>
 
         </div>
         </div>

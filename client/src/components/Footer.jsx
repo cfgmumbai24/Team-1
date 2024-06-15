@@ -1,7 +1,4 @@
-import { cibDribbble, cibFacebook, cibGoogle, cibTwitter, cilEnvelopeClosed, cilHome, cilPhone, cilPrint } from '@coreui/icons'
-import CIcon from '@coreui/icons-react'
-import React from 'react'
-
+//
 function Footer() {
   return (
     
