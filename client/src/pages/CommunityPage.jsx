@@ -1,15 +1,30 @@
-//import React from 'react'
+
+import React, { useState, useEffect } from 'react'
+import './community.css'
+import ForumCard from '../components/ForumCard'
+import { useLanguage } from '../contexts/languageContext'
+import useGetForumPosts from '../hooks/forum/useGetForumPosts';
 
 export default function CommunityPage() {
-  return (
-    <div className='heading m-4 row '>
-        <div className='col-3'></div>
-        <div className='col col-6 text-center'>
-        <div className='card border border-bold border-rounded p-5'>
-            <span className='sub-heading'>&quot;bjsdcbhbejnzbnxbsjehbzbcmnnjwhebmzhbc  dcbseubkbdjcbiejcbsmdchsbm&quot;</span>
+   const {isEnglish, toggleLanguage} = useLanguage();
+   console.log("is eng: ",isEnglish)
+   const english = localStorage.getItem(isEnglish)
 
-        </div>
-        </div>
+   const { posts, isGettingPosts} = useGetForumPosts(isEnglish);
+
+   console.log("posts: ", posts)
+
+   useEffect(() => {
+
+   }, []) 
+  return (
+    <div className='container'>
+      <div className='parent'>
+        {posts?.map((item, index) => {
+          return <ForumCard key={index} />
+        })}
+      </div>
+
     </div>
   )
 }
