@@ -9,9 +9,10 @@ import CommunityPage from './pages/CommunityPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import GovSchemes from './pages/GovSchemes';
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
@@ -20,6 +21,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/community" element={<CommunityPage />} />
+        <Route path="/gov-schemes" element={<GovSchemes />} />
+        <Route path="/gov-schemes/:id" component={SchemeDetails} />
       </Routes>
       <Outlet />
       <Footer />
