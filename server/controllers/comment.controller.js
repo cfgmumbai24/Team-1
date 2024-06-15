@@ -54,7 +54,7 @@ export const getCommentsByCommentId = async (req, res) => {
     try {
         const comments = await Comment.find({ comment_id: id });
 
-        if (comments.length === 0) {
+        if (comments.length === 0) {    
             return res.status(404).json({ error: 'No comments found with the provided id' });
         }
 
@@ -93,7 +93,7 @@ export const decrementDownvotes = async (req, res) => {
     try {
         const comment = await Comment.findOneAndUpdate(
             { _id: comment_id },
-            { $inc: { no_of_downvotes: 1 } }, // Decrementing the no_of_downvotes field by 1
+            { $dec: { no_of_downvotes: 1 } }, // Decrementing the no_of_downvotes field by 1
             { new: true } // To return the updated document
         );
 
