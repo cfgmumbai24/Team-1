@@ -42,45 +42,61 @@ router.post('/logout', (req, res) => {
 })
 
 router.post('/signup', async (req, res) => {
-    try {
-        const {username, email, password, confirmPassword, gender} = req.body
-        if(password !== confirmPassword) return res.status(400).json({error: "passwords dont match at server"})
+  try {
+      const { name, phoneNumber, age, language, gender, state, role, password, confirmPassword } = req.body;
 
-        const user = await User.findOne({email})
-        if(user) return res.status(400).json({error: "username already exists"})
-
-        const hashedPassword = await bcrypt.hash(password, 10)
-
-        const boyPic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
-        const girlPic = `https://avatar.iran.liara.run/public/girl?username=${username}`; 
-
-        const newUser = new User({
-            username,
-            email,
-            password: hashedPassword,
-            gender,
-            profilePic: gender === "male" ? boyPic : girlPic
-        })
-
-      if(newUser){
-        //generate JWT token
-        generateCookieAndSetToken(newUser._id, res);
-        await newUser.save();
-        res.status(201).json({
-            _id: newUser._id,
-            username: newUser.username,
-            email: newUser.email,
-            profilePic: newUser.profilePic
-        })
-      }else{
-        console.log("invalid user data")
+      if (password !== confirmPassword) {
+          return res.status(400).json({ error: "Passwords don't match" });
       }
 
-    } catch (error) {
-        res.status(500).json({error: "internal server error"});
-        console.log(error.message);
-    }
-})
+      const userExists = await User.findOne({ phoneNumber });
+      if (userExists) {
+          return res.status(400).json({ error: "User already exists" });
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const boyPic = `https://avatar.iran.liara.run/public/boy?username=${name}`;
+      const girlPic = `https://avatar.iran.liara.run/public/girl?username=${name}`;
+
+      const newUser = new User({
+          name,
+          phoneNumber,
+          age,
+          language,
+          gender,
+          state,
+          role,
+          password: hashedPassword,
+          profilePic: gender === "male" ? boyPic : girlPic
+      });
+
+      if (newUser) {
+          // Generate JWT token
+          generateCookieAndSetToken(newUser._id, res);
+          await newUser.save();
+          res.status(201).json({
+              _id: newUser._id,
+              name: newUser.name,
+              phoneNumber: newUser.phoneNumber,
+              age: newUser.age,
+              language: newUser.language,
+              gender: newUser.gender,
+              state: newUser.state,
+              role: newUser.role,
+              profilePic: newUser.profilePic
+          });
+      } else {
+          console.log("Invalid user data");
+          res.status(400).json({ error: "Invalid user data" });
+      }
+
+  } catch (error) {
+      res.status(500).json({ error: "Internal server error" });
+      console.log("Error in user signup: ", error.message);
+  }
+});
+
 
 
 export default router
