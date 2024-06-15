@@ -1,0 +1,12 @@
+& .recharts-cartesian-grid-horizontal line,
+& .recharts-cartesian-grid-vertical line {
+  stroke: var(--color-grey-300);
+}
+
+.graph-bg{
+    background-color: var(--color-grey-0);
+}
+
+.graph-bg-stats{
+    background-color: var(--color-grey-50);
+}
