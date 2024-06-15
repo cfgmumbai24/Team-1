@@ -35,18 +35,24 @@ export const createComment = async (req, res) => {
     }
 };
 
-export const getCommentsByPostId = async (req, res) => {
-    const { post_id } = req.params;
+    export const getCommentsByPostId = async (req, res) => {
+        const { post_id, language } = req.params;
 
-    try {
-        const comments = await Comment.find({ post_id });
+        try {
+            const filter = { post_id };
+            if (language) {
+                filter.language = language;
+            }
 
-        res.status(200).json(comments);
-    } catch (error) {
-        console.error("Error retrieving comments:", error.message);
-        res.status(500).json({ error: 'Failed to retrieve comments' });
-    }
-};
+            const comments = await Comment.find(filter);
+
+            res.status(200).json(comments);
+        } catch (error) {
+            console.error("Error retrieving comments:", error.message);
+            res.status(500).json({ error: 'Failed to retrieve comments' });
+        }
+    };
+
 
 export const getCommentsByCommentId = async (req, res) => {
     const { id } = req.params; // Assuming 'id' is the parameter name for comment_id

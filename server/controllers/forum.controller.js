@@ -55,7 +55,32 @@ export const getForumPostsInRange = async (req, res) => {
         const forumPosts = await ForumPost.aggregate([
             { $match: filter },
             { $skip: startIndex },
-            { $limit: endIndex - startIndex + 1 }
+            { $limit: endIndex - startIndex + 1 },
+            {
+                $lookup: {
+                    from: 'users', // Name of the User collection
+                    localField: 'user_id', // Field in ForumPost
+                    foreignField: '_id', // Field in User
+                    as: 'userDetails' // Output array field
+                }
+            },
+            {
+                $unwind: '$userDetails' // Deconstruct the array to get the first matched user
+            },
+            {
+                $project: {
+                    _id: 1,
+                    content: 1,
+                    language: 1,
+                    user_id: 1,
+                    no_of_upvotes: 1,
+                    no_of_downvotes: 1,
+                    reported_count: 1,
+                    createdAt: 1, // Include the created_at field
+                    'userDetails.name': 1, // Include only the user's name
+                    'userDetails.profilePic': 1 // Include the user's profilePic
+                }
+            }
         ]);
 
         return res.status(200).json(forumPosts);
@@ -63,4 +88,5 @@ export const getForumPostsInRange = async (req, res) => {
         return res.status(500).json({ message: `Error retrieving forum posts: ${error.message}` });
     }
 };
+
 
