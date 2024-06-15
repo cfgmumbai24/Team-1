@@ -69,7 +69,7 @@ function MainNav() {
             <span>Home</span>
           </StyledNavLink>
         </li>
-        <li>
+        {/* <li>
           <StyledNavLink to="/syllabus">
             <PiBooks />
             <span>Syllabus</span>
@@ -80,14 +80,14 @@ function MainNav() {
             <GrSchedule />
             <span>Time Table</span>
           </StyledNavLink>
-        </li>
+        </li> */}
         <li>
           <StyledNavLink to="/projects">
             <FaComputer />
-            <span>Your projects</span>
+            <span>Modules</span>
           </StyledNavLink>
         </li>
-        <li>
+        {/* <li>
           <StyledNavLink to="/feedback">
             <HiOutlineUsers />
             <span>Feedback</span>
@@ -98,7 +98,7 @@ function MainNav() {
             <IoBookOutline />
             <span>AICTE Points</span>
           </StyledNavLink>
-        </li>
+        </li> */}
       </NavList>
     </nav>
   );
