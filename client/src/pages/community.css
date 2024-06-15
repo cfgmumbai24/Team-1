@@ -8,10 +8,13 @@
 
 .parent{
     width: 70%;
-    height: 80vh;
-    background-color: red;
+    height: 75vh;
+    margin-bottom: '50px';
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }

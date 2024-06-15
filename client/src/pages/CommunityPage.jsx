@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+
+import React, { useState, useEffect } from 'react'
 import './community.css'
 import ForumCard from '../components/ForumCard'
 import { useLanguage } from '../contexts/languageContext'
@@ -23,6 +24,7 @@ export default function CommunityPage() {
           return <ForumCard key={index} />
         })}
       </div>
+
     </div>
   )
 }
