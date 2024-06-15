@@ -13,6 +13,7 @@ import { GrSchedule } from "react-icons/gr";
 import { FaComputer } from "react-icons/fa6";
 import { IoBookOutline } from "react-icons/io5";
 import { PiBooks } from "react-icons/pi";
+import { HiHome, HiUpload, HiTrash } from "react-icons/hi";
 
 const NavList = styled.ul`
   display: flex;
@@ -85,6 +86,18 @@ function MainNav() {
           <StyledNavLink to="/projects">
             <FaComputer />
             <span>Modules</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/upload" activeClassName="active">
+            <HiUpload />
+            <span>Upload Video</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/delete" activeClassName="active">
+            <HiTrash />
+            <span>Delete Video</span>
           </StyledNavLink>
         </li>
         {/* <li>
