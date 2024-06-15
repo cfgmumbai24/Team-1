@@ -8,3 +8,7 @@
   margin: 3px;
   padding-left: 5px;
 }
+.card-body {
+  height: 300px;
+  width: 300px;
+}
