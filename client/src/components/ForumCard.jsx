@@ -32,13 +32,19 @@ export default function ForumCard() {
     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     {/* <a href="#" className="card-link">Card link</a>
     <a href="#" className="card-link">Another link</a> */}
+    <div style={{display: 'flex', justifyContent: 'space-between', margin: 0}}>
     <a href="#" onClick={toggleReplies}>
         {showReplies ? 'Hide Replies' : 'Show Replies'}
       </a>
+      <div style={{cursor: 'pointer'}}>
+        <img style={{height: '25px'}} src="upvote.svg" alt="" />
+        <img style={{height: '25px'}} src="downvote.svg" alt="" />
+      </div>
+      </div>
       {showReplies && (
         <div className="replies">
           {/* {replies.map((reply, index) => ( */}
-            <Reply reply={"ok"} />
+            <Reply reply={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the "} />
             <Reply reply={"ok2"} />
             <Reply reply={"ok3"} />
           {/* ))} */}
