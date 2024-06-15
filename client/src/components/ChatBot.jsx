@@ -42,8 +42,8 @@ const SearchBar = () => {
       {/* {response && <div style={styles.response}>{response}</div>} */}
     </div>
 
-    {response && <div class="card" style={{overflowY: 'scroll', width: '80%'}}>
-    <div class="card-body sub-heading">
+    {response && <div style={{marginLeft: '50%', transform: 'translateX(-50%)', display: 'flex', overflowY: 'scroll', width: '80%', background: 'white', padding: '12.5px', borderRadius: '12px', justifyContent: 'center'}}>
+    <div>
     {response}
   </div>
 </div>}
