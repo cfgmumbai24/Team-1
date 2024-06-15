@@ -11,7 +11,8 @@ const SavingsCalculator = () => {
   const [savingFrequency, setSavingFrequency] = useState('weekly');
   const [savingAmount, setSavingAmount] = useState('');
   const [interestRate, setInterestRate] = useState('');
-  const [timeToSave, setTimeToSave] = useState('');
+  const [yearsToSave, setYearsToSave] = useState(0);
+  const [monthsToSave, setMonthsToSave] = useState(0);
 
   const calculateTimeToSave = () => {
     const goalAmount = parseFloat(amountToSave);
@@ -49,11 +50,13 @@ const SavingsCalculator = () => {
 
     // const months = Math.floor((years - Math.floor(years)) * 12);
     years = Math.floor(years);
-    if(language=="en"){
-    setTimeToSave(`To save ${goalAmount} of rupees, you will need to save for ${years} years and ${months} months.`);
-    } else {
-        setTimeToSave(`${goalAmount} रुपए बचाने के लिए, आपको ${years} साल और ${months} ​​महीने के लिए बचत करनी होगी।`);
-    }
+    // if(language=="en"){
+    //     setTimeToSave(`To save ${goalAmount} of rupees, you will need to save for ${years} years and ${months} months.`);
+    // } else {
+    //     setTimeToSave(`${goalAmount} रुपए बचाने के लिए, आपको ${years} साल और ${months} ​​महीने के लिए बचत करनी होगी।`);
+    // }
+    setYearsToSave(years)
+    setMonthsToSave(months)
   };
 
   return (
@@ -93,7 +96,7 @@ const SavingsCalculator = () => {
         placeholder="%"
       />
       <Button title={data[4]['getResults'][language]} onPress={calculateTimeToSave} />
-      {timeToSave !== '' && <Text style={styles.result}>{timeToSave}</Text>}
+      {(yearsToSave!=0 || monthsToSave!=0) ? <Text style={styles.result}>{(language=="en")?`To save ${amountToSave} of rupees, you will need to save for ${yearsToSave} years and ${monthsToSave} months.`:`${amountToSave} रुपए बचाने के लिए, आपको ${yearsToSave} साल और ${monthsToSave} ​​महीने के लिए बचत करनी होगी।`}</Text>:null}
     </View>
   );
 };
