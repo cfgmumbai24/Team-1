@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -28,9 +27,9 @@ const Header = () => {
             <Link to={"/about-us"}
           className="text-decoration-none text-body body-font  border-0" >
             About Us </Link>
-            <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
+            <form className="d-flex" role="search">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-outline-success" type="submit">Search</button>
      
       </form>
       <div className='d-flex align-items-center gap-3 sub-body-font'>
@@ -52,7 +51,7 @@ const Header = () => {
       </div>
       </div>
       <Link to="/login">
-       <button type="button" class="btn btn-warning">Login</button>
+       <button type="button" className="btn btn-warning">Login</button>
        </Link>
      
     </div>
