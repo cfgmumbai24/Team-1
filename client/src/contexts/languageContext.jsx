@@ -1,39 +1,20 @@
-import { createContext, useContext } from "react";
-import PropTypes from 'prop-types';
-import { useLocalStorageState } from "../../utils/useLocalStorage";
-// import { useLocalStorageState } from "../utils/useLocalStorage";
+import React, { createContext, useState, useContext } from 'react';
 
-const defaultContextValue = {
-  isEnglish: true,
-  toggleLanguage: () => {}
+// Create a context object
+const LanguageContext = createContext();
+
+// Custom hook to use the language context
+export const useLanguage = () => {
+  return useContext(LanguageContext);
 };
 
-const LanguageContext = createContext(defaultContextValue);
-
-function LanguageProvider({ children }) {
-  const [isEnglish, setIsEnglish] = useLocalStorageState("isEnglish", true);
-
-  function toggleLanguage() {
-    setIsEnglish((prevIsEnglish) => !prevIsEnglish);
-  }
+// Context provider component
+export const LanguageProvider = ({ children }) => {
+  const [language, setLanguage] = useState('en'); // Default language is English
 
   return (
-    <LanguageContext.Provider value={{ isEnglish, toggleLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
-}
-
-function useLanguage() {
-  const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error("useLanguage must be used within a LanguageProvider");
-  }
-  return context;
-}
-
-LanguageProvider.propTypes = {
-  children: PropTypes.node.isRequired
 };
-
-export { useLanguage, LanguageProvider };
