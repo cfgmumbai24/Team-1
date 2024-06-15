@@ -1,6 +1,7 @@
 import React from 'react';
 import VideoPage from "./VideoPage";
 import { useState } from 'react';
+import SearchBar from '../components/ChatBot';
 
 const Home = function Home() {
   const [showVideo, setShowVideo] = useState(false);
@@ -14,6 +15,9 @@ const Home = function Home() {
       </div>
       <div className='col-6 text-center'>
         <button type="button" onClick={() => setShowVideo(val => !val)} className="btn sub-heading rounded btn-outline-primary">{showVideo ? "Hide Videos" : "Show Videos"}</button>
+      </div>
+      <div>
+        <SearchBar></SearchBar>
       </div>
       {showVideo && <VideoPage />}
     </div>
