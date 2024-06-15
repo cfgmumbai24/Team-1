@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BiUpvote, BiSolidUpvote, BiDownvote, BiSolidDownvote } from "react-icons/bi";
 
 export const Reply = ({ reply }) => {
   return (
@@ -30,15 +31,17 @@ export default function ForumCard() {
       <h6 className="card-subtitle mb-2 text-body-secondary" style={{margin:0}}>timestamp</h6>
     </div>
     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    {/* <a href="#" className="card-link">Card link</a>
-    <a href="#" className="card-link">Another link</a> */}
     <div style={{display: 'flex', justifyContent: 'space-between', margin: 0}}>
     <a href="#" onClick={toggleReplies}>
         {showReplies ? 'Hide Replies' : 'Show Replies'}
       </a>
       <div style={{cursor: 'pointer'}}>
-        <img style={{height: '25px'}} src="upvote.svg" alt="" />
-        <img style={{height: '25px'}} src="downvote.svg" alt="" />
+      <BiUpvote />
+      <BiDownvote />
+      <BiSolidUpvote />
+      <BiSolidDownvote />
+        {/* <img style={{height: '25px'}} src="upvote.svg" alt="" />
+        <img style={{height: '25px'}} src="downvote.svg" alt="" /> */}
       </div>
       </div>
       {showReplies && (
