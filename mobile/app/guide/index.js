@@ -12,7 +12,7 @@ const Guide = () => {
     <View style={styles.container}>
     <TouchableOpacity
         style={styles.card}
-        // onPress={() => navigation.navigate('savings')}
+        onPress={() => navigation.navigate('money')}
       >
         <Image
           source={require('../../assets/money.jpeg')}

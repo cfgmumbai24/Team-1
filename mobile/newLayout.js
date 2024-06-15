@@ -2,10 +2,10 @@ import React from 'react';
 import { Tabs } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import { useLanguage } from './LanguageContext';
+import data from './data'
 
 const NewLayout = () => {
     const { language, setLanguage } = useLanguage();
-
     const toggleLanguage = () => {
       const newLanguage = language === 'en' ? 'hi' : 'en';
       setLanguage(newLanguage);
@@ -53,8 +53,8 @@ const NewLayout = () => {
       })}
     >
       <Tabs.Screen name="index" options={{ title: 'Multiply' }} />
-      <Tabs.Screen name="guide" options={{ title: 'Guides' }} />
-      <Tabs.Screen name="calc" options={{ title: 'Calculators' }} />
+      <Tabs.Screen name="guide" options={{ title: data[5]['guide'][language] }} />
+      <Tabs.Screen name="calc" options={{ title: data[6]['calculator'][language] }} />
     </Tabs>
   );
 };

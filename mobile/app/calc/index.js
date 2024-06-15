@@ -1,8 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from 'expo-router';
+import { useLanguage } from '../../LanguageContext';
+import data from '../../data.js'
 
 const Calc = () => {
+    const { language, setLanguage } = useLanguage();
+    let homedata = data[2]['calculators']
     const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -10,15 +14,25 @@ const Calc = () => {
         style={styles.card}
         onPress={() => navigation.navigate('savings')}
       >
-        <Text style={styles.cardTitle}>Savings Calculator</Text>
-        <Text style={styles.cardDescription}>Calculate your savings over time</Text>
+        <Image
+          source={require('../../assets/saving.png')}
+          style={styles.image}
+          resizeMode="contain"
+        />
+        <Text style={styles.cardTitle}>{homedata[language]['Savingscalculator']['h']}</Text>
+        {/* <Text style={styles.cardDescription}>Calculate your savings over time</Text> */}
       </TouchableOpacity>
     <TouchableOpacity
         style={styles.card}
         onPress={() => navigation.navigate('budget')}
       >
-        <Text style={styles.cardTitle}>Budget Calculator</Text>
-        <Text style={styles.cardDescription}>Create monthly budgets</Text>
+        <Image
+          source={require('../../assets/budget.png')}
+          style={styles.image}
+          resizeMode="contain"
+        />
+        <Text style={styles.cardTitle}>{homedata[language]['BudgetCalculator']['h']}</Text>
+        {/* <Text style={styles.cardDescription}>Create monthly budgets</Text> */}
       </TouchableOpacity>
     </View>
   );
@@ -46,11 +60,18 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 18,
     fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 5
   },
   cardDescription: {
     fontSize: 14,
     color: '#666',
     marginTop: 5,
+  },
+  image: {
+    width: '100%',
+    height: 50,
+    marginBottom: 12
   },
 });
 

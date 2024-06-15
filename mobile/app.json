@@ -3,7 +3,7 @@
     "name": "jumbl",
     "slug": "jumbl",
     "version": "1.0.0",
-    "scheme":"com.jumbltech.jumbl",
+    "scheme": "com.jumbltech.jumbl",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -19,13 +19,22 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jsbhumra.jumbl"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c82285a3-4ca0-40e7-a15b-71367a9cea54"
+      }
+    }
   }
 }

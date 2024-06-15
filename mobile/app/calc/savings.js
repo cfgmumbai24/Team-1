@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import {Picker} from '@react-native-picker/picker'
+import { useLanguage } from '../../LanguageContext';
+import data from '../../data.js'
+
 const SavingsCalculator = () => {
+    const { language, setLanguage } = useLanguage();
+    let homedata = data[2]['calculators']
   const [amountToSave, setAmountToSave] = useState('');
   const [savingFrequency, setSavingFrequency] = useState('weekly');
   const [savingAmount, setSavingAmount] = useState('');
@@ -44,47 +49,50 @@ const SavingsCalculator = () => {
 
     // const months = Math.floor((years - Math.floor(years)) * 12);
     years = Math.floor(years);
-
+    if(language=="en"){
     setTimeToSave(`To save ${goalAmount} of rupees, you will need to save for ${years} years and ${months} months.`);
+    } else {
+        setTimeToSave(`${goalAmount} रुपए बचाने के लिए, आपको ${years} साल और ${months} ​​महीने के लिए बचत करनी होगी।`);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Amount to be saved (in rupees)</Text>
+      <Text style={styles.label}>{homedata[language]['Savingscalculator']['h1']}</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
         value={amountToSave}
         onChangeText={setAmountToSave}
-        placeholder="Enter amount to save"
+        placeholder="₹"
       />
-      <Text style={styles.label}>Saving Frequency</Text>
+      <Text style={styles.label}>{homedata[language]['Savingscalculator']['h2']}</Text>
       <Picker
         selectedValue={savingFrequency}
         style={styles.picker}
         onValueChange={(itemValue) => setSavingFrequency(itemValue)}
       >
-        <Picker.Item label="Weekly" value="weekly" />
-        <Picker.Item label="Monthly" value="monthly" />
-        <Picker.Item label="Yearly" value="yearly" />
+        <Picker.Item label={homedata[language]['Savingscalculator']['h21']} value="weekly" />
+        <Picker.Item label={homedata[language]['Savingscalculator']['h22']} value="monthly" />
+        <Picker.Item label={homedata[language]['Savingscalculator']['h23']} value="yearly" />
       </Picker>
-      <Text style={styles.label}>Amount you can save (in rupees)</Text>
+      <Text style={styles.label}>{homedata[language]['Savingscalculator']['h3']}</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
         value={savingAmount}
         onChangeText={setSavingAmount}
-        placeholder="Enter saving amount"
+        placeholder="₹"
       />
-      <Text style={styles.label}>Interest per annum (in percentage)</Text>
+      <Text style={styles.label}>{homedata[language]['Savingscalculator']['h4']}</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
         value={interestRate}
         onChangeText={setInterestRate}
-        placeholder="Enter interest rate"
+        placeholder="%"
       />
-      <Button title="Get Result" onPress={calculateTimeToSave} />
+      <Button title={data[4]['getResults'][language]} onPress={calculateTimeToSave} />
       {timeToSave !== '' && <Text style={styles.result}>{timeToSave}</Text>}
     </View>
   );
@@ -94,7 +102,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fefaea',
+    backgroundColor: '#fff',
   },
   label: {
     fontSize: 16,
@@ -110,8 +118,8 @@ const styles = StyleSheet.create({
   picker: {
     height: 50,
     width: '100%',
-    marginBottom: 125,
-    marginTop: -50
+    marginBottom: 150,
+    marginTop: -25
   },
   result: {
     marginTop: 20,
