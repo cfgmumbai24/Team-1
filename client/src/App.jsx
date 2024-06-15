@@ -19,7 +19,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/community" element={<CommunityPage />} />
+        <Route path="/forum" element={<CommunityPage />} />   
       </Routes>
       <Outlet />
       <Footer />

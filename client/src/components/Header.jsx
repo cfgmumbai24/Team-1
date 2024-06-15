@@ -21,9 +21,9 @@ const Header = () => {
             <Link to={"/calculator"}
           className="text-decoration-none text-body body-font  border-0" >
             Calculator </Link>
-            <Link to={"/discover"}
+            <Link to={"/forum"}
           className="text-decoration-none text-body body-font  border-0" >
-            Discover </Link>
+            Forum </Link>
             <Link to={"/about-us"}
           className="text-decoration-none text-body body-font  border-0" >
             About Us </Link>
