@@ -5,7 +5,7 @@ import { useLanguage } from '../contexts/languageContext';
 import data from '../../data';
 
 const SearchBar = () => {
-  const {language, setLanguage} = useLanguage()
+  const {isEnglish, toggleLanguage} = useLanguage()
   const [query, setQuery] = useState('');
   const [response, setResponse] = useState('');
   const [search,setSearch] = useState('')
@@ -41,7 +41,7 @@ const SearchBar = () => {
         placeholder=""
         style={styles.input}
       />
-      <button onClick={handleSearch} style={styles.button}>{data[2]['search'][language]}</button>
+      <button onClick={handleSearch} style={styles.button}>{data[2]['search'][isEnglish?'en':'hi']}</button>
       {/* {response && <div style={styles.response}>{response}</div>} */}
     </div>
 

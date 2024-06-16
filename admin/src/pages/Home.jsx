@@ -1,3 +1,4 @@
+import ActiveChart from "../features/dashboard/ActiveChart";
 import AttendanceGraph from "../features/dashboard/AttendanceGraph";
 import NeedleChart from "../features/dashboard/NeedleChart";
 import ProgressGraph from "../features/dashboard/ProgressGraph";
@@ -15,6 +16,7 @@ export default function Home() {
 
     <AttendanceGraph />
     {/* <ProgressGraph /> */}
+    <ActiveChart />
   </div>
   )
 }

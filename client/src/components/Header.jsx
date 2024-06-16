@@ -4,18 +4,18 @@ import { useLanguage } from '../contexts/languageContext';
 import data from '../../data';
 
 const Header = () => {
-  const {language, setLanguage} = useLanguage()
+  const {isEnglish, toggleLanguage} = useLanguage()
   // const headData = data[]
-  console.log(language)
-    const [isEnglish, setIsEnglish] = useState(true);
+    const [isEng, setIsEng] = useState(false);
 
-    useEffect(()=>{
-      if(!isEnglish) setLanguage('en')
-        else setLanguage('hi')
-    },[isEnglish])
+    // useEffect(()=>{
+    //   if(!isEng) to('en')
+    //     else setLanguage('hi')
+    // },[isEnglish])
 
     const handleToggle = () => {
-      setIsEnglish(!isEnglish);
+      setIsEng(!isEng);
+      toggleLanguage()
     };
   return (<>
   
@@ -26,24 +26,24 @@ const Header = () => {
             Multiply </Link>
             <Link to={"/guide"}
           className="text-decoration-none text-body body-font  border-0" >
-            {data[7]['guide'][language]} </Link>
+            {data[7]['guide'][isEnglish?'en':'hi']} </Link>
             <Link to={"/calculator"}
           className="text-decoration-none text-body body-font  border-0" >
-            {data[8]['calculator'][language]} </Link>
+            {data[8]['calculator'][isEnglish?'en':'hi']} </Link>
             <Link to={"/forum"}
           className="text-decoration-none text-body body-font  border-0" >
-            {data[0]['forum'][language]} </Link>
+            {data[0]['forum'][isEnglish?'en':'hi']} </Link>
             <Link to={"/video"}
           className="text-decoration-none text-body body-font  border-0" >
-             {data[1]['abtUs'][language]} </Link>
+             {data[1]['abtUs'][isEnglish?'en':'hi']} </Link>
             <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="" aria-label="Search"/>
-        <button className="btn btn-outline-success" type="submit">{data[2]['search'][language]}</button>
+        <button className="btn btn-outline-success" type="submit">{data[2]['search'][isEnglish?'en':'hi']}</button>
      
       </form>
       <div className='d-flex align-items-center gap-3 sub-body-font'>
       <label className="form-check-label " style={{fontSize:"1.2rem"}} htmlFor="flexSwitchCheckChecked">
-      {data[3]['eng'][language]}
+      {data[3]['eng'][isEnglish?'en':'hi']}
       </label>
       <div className="form-check form-switch sub-heading">
         <input
@@ -51,16 +51,16 @@ const Header = () => {
           type="checkbox"
           role="switch"
           id="flexSwitchCheckChecked"
-          checked={isEnglish}
+          checked={isEng}
           onChange={handleToggle}
         />
         <label className="form-check-label" htmlFor="flexSwitchCheckChecked">
-        {data[4]['hin'][language]}
+        {data[4]['hin'][isEnglish?'en':'hi']}
         </label>
       </div>
       </div>
       <Link to="/login">
-       <button type="button" className="btn btn-warning">{data[5]['log'][language]}</button>
+       <button type="button" className="btn btn-warning">{data[5]['log'][isEnglish?'en':'hi']}</button>
        </Link>
      
     </div>
