@@ -1,6 +1,4 @@
 import React, { useEffect , useState } from 'react'
-
-import React, { useState, useEffect } from 'react'
 import './community.css'
 import ForumCard from '../components/ForumCard'
 import { useLanguage } from '../contexts/languageContext'
@@ -26,26 +24,7 @@ export default function CommunityPage() {
           <input style={{width: '90%', padding: '5px'}} onChange={e => setMessText(e.target.value)} type="text" />
           <button className='btn btn-primary'>Send</button>
         </div>
-      </div>
-   const {isEnglish, toggleLanguage} = useLanguage();
-   console.log("is eng: ",isEnglish)
-   const english = localStorage.getItem(isEnglish)
-
-   const { posts, isGettingPosts} = useGetForumPosts(isEnglish);
-
-   console.log("posts: ", posts)
-
-   useEffect(() => {
-
-   }, []) 
-  return (
-    <div className='container'>
-      <div className='parent'>
-        {posts?.map((item, index) => {
-          return <ForumCard key={index} />
-        })}
-      </div>
-
+      {/* </div> */}
     </div>
   )
 }
