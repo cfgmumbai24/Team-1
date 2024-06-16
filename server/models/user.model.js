@@ -1,5 +1,4 @@
-
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -17,7 +16,7 @@ const userSchema = new mongoose.Schema({
     language: {
         type: String,
         required: true,
-        enum: ['English','Hindi']
+        enum: ['English', 'Hindi']
     },
     gender: {
         type: String,
@@ -31,13 +30,17 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         required: true,
-        enum: ['admin','member','moderator']
+        enum: ['admin', 'member', 'moderator']
     },
     profilePic: {
         type: String,
         default: ""
+    },
+    lastLogin: {
+        type: Date,
+        default: Date.now // Set default to the current time
     }
-}, {timestamps: true}) //helps get the date and time for when a user is created
+}, { timestamps: true }); // Automatically adds createdAt and updatedAt fields
 
 const User = mongoose.model("User", userSchema);
 
