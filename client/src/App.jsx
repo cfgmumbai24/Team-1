@@ -6,6 +6,7 @@ import CommunityPage from './pages/CommunityPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import Videos from './pages/Videos';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { LanguageProvider } from './contexts/languageContext';
 
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/forum" element={<CommunityPage />} />   
+        <Route path="/video" element={<Videos />} />   
       </Routes>
       <Outlet />
     </BrowserRouter>

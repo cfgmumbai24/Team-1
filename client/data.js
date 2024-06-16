@@ -1,6 +1,6 @@
 const data = [
     {forum: { en: "Forum", hi: "मंच"}},
-    {abtUs: {en: "About Us", hi: "हमारे बारे में"}},
+    {abtUs: {en: "Videos", hi: "वीडियो"}},
     {search: {en: "Search", hi: "खोज"}},
     {eng: {en: "English", hi: "अंग्रेज़ी"}},
     {hin: {en: "Hindi", hi: "हिंदी"}},

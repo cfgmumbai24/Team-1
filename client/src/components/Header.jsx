@@ -33,7 +33,7 @@ const Header = () => {
             <Link to={"/forum"}
           className="text-decoration-none text-body body-font  border-0" >
             {data[0]['forum'][language]} </Link>
-            <Link to={"/about-us"}
+            <Link to={"/video"}
           className="text-decoration-none text-body body-font  border-0" >
              {data[1]['abtUs'][language]} </Link>
             <form className="d-flex" role="search">
