@@ -6,12 +6,12 @@ import { useLanguage } from '../contexts/languageContext';
 import data from '../../data';
 
 const Home = function Home() {
-  const {language, setLanguage} = useLanguage()
+  const {isEnglish, toggleLanguage} = useLanguage()
   const [showVideo, setShowVideo] = useState(false);
   return (
     <div className="d-flex flex-column align-items-center justify-content-center" style={{ height: '100vh' }}>
       <div className='heading col-6 fw-bold mb-5 text-center '>
-        <span>{data[6]['homeHead'][language]}</span>
+        <span>{data[6]['homeHead'][isEnglish?'en':'hi']}</span>
       </div>
       <div className='heading row fw-bold'>
         {/* <div className='col-6 mb-5 text-center heading'><span>Videos</span></div> */}

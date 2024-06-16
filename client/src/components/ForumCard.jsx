@@ -8,8 +8,8 @@ export const Reply = ({ reply }) => {
   return (
     <div style={{paddingTop: '7px',paddingBottom: '2px', borderBottom: '1px #ccc dashed'}} className="reply">
       <div style={{display: 'flex', alignItems: 'center', justifyContent: 'left', marginLeft: '10', verticalAlign: 'middle'}}>
-          <img src="https://via.placeholder.com/35" style={{borderRadius: 999, height: '20px'}} alt="Sample Image" />
-          <h5 className="card-title" style={{fontSize: 15, textDecoration: 'underline', margin: 0}}>{'jjj'}</h5>
+          <img src="https://avatar.iran.liara.run/public/girl?username=jane" style={{borderRadius: 999, height: '20px'}} alt="Sample Image" />
+          <h5 className="card-title" style={{fontSize: 15, textDecoration: 'underline', margin: 0}}>{'Jane Doe'}</h5>
           <p style={{paddingLeft: '7.5px', margin: 0}}>{reply}</p>
       </div>
     </div>
@@ -34,8 +34,8 @@ export default function ForumCard({item}) {
   };
 
   return (
-    <div className="card forum" style={{width: '100%', height: '80%'}}>
-  <div className="card-body">
+    <div className="card forum" style={{width: '100%', height: 'auto', padding: '25px'}}>
+  {/* <div className="card-body"> */}
     <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', verticalAlign: 'middle', flexWrap: 'wrap'}}>
       <div style={{display: 'flex', alignItems: 'center', justifyContent: 'left', marginLeft: '10', verticalAlign: 'middle'}}>
           <img src={item?.userDetails?.profilePic} style={{borderRadius: 999}} alt="Sample Image" height={30} width={30} />
@@ -74,13 +74,13 @@ export default function ForumCard({item}) {
       {showReplies && (
         <div className="replies">
           {/* {replies.map((reply, index) => ( */}
-            <Reply reply={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the "} />
-            <Reply reply={"ok2"} />
-            <Reply reply={"ok3"} />
+            <Reply reply={"Reply 1"} />
+            <Reply reply={"Reply 2"} />
+            <Reply reply={"Reply 3"} />
           {/* ))} */}
         </div>
       )}
-  </div>
+  {/* </div> */}
 </div>
   )
 }

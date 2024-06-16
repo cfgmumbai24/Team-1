@@ -3,6 +3,7 @@ import './community.css'
 import ForumCard from '../components/ForumCard'
 import { useLanguage } from '../contexts/languageContext'
 import useGetForumPosts from '../hooks/forum/useGetForumPosts';
+import data from '../../data';
 
 export default function CommunityPage() {
   const [messText,setMessText] = useState('')
@@ -22,7 +23,7 @@ export default function CommunityPage() {
         </div>
         <div style={{display: 'flex', justifyContent: 'space-around',position: 'absolute', zIndex: 120, bottom: '20px', left: '50%', transform: 'translateX(-50%)', width: '60%'}}>
           <input style={{width: '90%', padding: '5px'}} onChange={e => setMessText(e.target.value)} type="text" />
-          <button className='btn btn-primary'>Send</button>
+          <button className='btn btn-primary'>{data[9]['send'][isEnglish?'en':'hi']}</button>
         </div>
       {/* </div> */}
     </div>

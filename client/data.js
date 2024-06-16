@@ -7,7 +7,10 @@ const data = [
     {log: {en: "Login", hi: "लॉग इन"}},
     {homeHead: {en: "Let's Start Learning", hi: "आइये सीखना शुरू करें"}},
 { guide: { en: "Guides", hi: "गाइड" } },
-{ calculator: { en: "Calculators", hi: "कैलकुलेटर" } },];
+{ calculator: { en: "Calculators", hi: "कैलकुलेटर" } },
+{send: {en: "Send", hi: "भेजें"}},
+{showVid: {en: "Show Videos", hi: "वीडियो दिखाएं"}},
+{hideVid: {en: "Hide Videos", hi: "वीडियो छिपाएँ"}}];
 
 export default data;
 
