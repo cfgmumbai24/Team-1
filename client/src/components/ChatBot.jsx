@@ -1,8 +1,11 @@
 // SearchBar.jsx
 import React, { useState } from 'react';
 import { run } from './Bot.js'; // Adjust the import path as necessary
+import { useLanguage } from '../contexts/languageContext';
+import data from '../../data';
 
 const SearchBar = () => {
+  const {isEnglish, toggleLanguage} = useLanguage()
   const [query, setQuery] = useState('');
   const [response, setResponse] = useState('');
   const [search,setSearch] = useState('')
@@ -35,15 +38,15 @@ const SearchBar = () => {
         value={query}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
-        placeholder="Search..."
+        placeholder=""
         style={styles.input}
       />
-      <button onClick={handleSearch} style={styles.button}>Search</button>
+      <button onClick={handleSearch} style={styles.button}>{data[2]['search'][isEnglish?'en':'hi']}</button>
       {/* {response && <div style={styles.response}>{response}</div>} */}
     </div>
 
-    {response && <div class="card" style={{overflowY: 'scroll', width: '80%'}}>
-    <div class="card-body sub-heading">
+    {response && <div style={{marginLeft: '50%', transform: 'translateX(-50%)', display: 'flex', overflowY: 'scroll', width: '80%', background: 'white', padding: '12.5px', borderRadius: '12px', justifyContent: 'center'}}>
+    <div>
     {response}
   </div>
 </div>}

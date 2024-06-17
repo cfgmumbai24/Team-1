@@ -6,29 +6,48 @@ import generateCookieAndSetToken from "../utils/generateToken.js";
 const router = express.Router();
 
 router.post('/login', async (req, res) => {
-   try {
-    const {email, password} = req.body;
-    const user = await User.findOne({email});
-    const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
+  try {
+      const { phoneNumber, password } = req.body;
 
-    if(!user || !isPasswordCorrect){
-      return res.status(400).json({error: "Invalid username or password"})
-    }
+      // Find user by phone number
+      const user = await User.findOne({ phoneNumber });
 
-    generateCookieAndSetToken(user._id, res);
+      // Check if user exists
+      if (!user) {
+          return res.status(404).json({ error: "User not found" });
+      }
 
-    res.status(200).json({
-      _id: user._id,
-      username: user.username,
-      email: user.email,
-      profilePic: user.profilePic,
-    })
-    
-   } catch (error) {
-    console.log("Error in login controller", error.message);
-    res.status(500).json({error: "Internal server error"});
-   }
-})
+      // Check if password is correct
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (!isPasswordValid) {
+          return res.status(401).json({ error: "Invalid password" });
+      }
+
+      // Update lastLogin field with current date and time
+      user.lastLogin = new Date();
+      await user.save();
+
+      // Generate JWT token and set cookie
+      generateCookieAndSetToken(user._id, res);
+
+      // Respond with user data
+      res.status(200).json({
+          _id: user._id,
+          name: user.name,
+          phoneNumber: user.phoneNumber,
+          age: user.age,
+          language: user.language,
+          gender: user.gender,
+          state: user.state,
+          role: user.role,
+          profilePic: user.profilePic
+      });
+  } catch (error) {
+      console.error("Error in user login:", error.message);
+      res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 
 router.post('/logout', (req, res) => {
     try {
@@ -97,6 +116,18 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+
+router.get('/active-users', async (req, res) => {
+  const tenDaysAgo = new Date(Date.now() - 10 * 24 * 60 * 60 * 1000); // 10 days in milliseconds
+  
+  try {
+      const activeUsers = await User.find({ lastLogin: { $gte: tenDaysAgo } });
+
+      res.status(200).json(activeUsers);
+  } catch (error) {
+      res.status(500).json({ message: `Error fetching active users: ${error.message}` });
+  }
+});
 
 
 export default router
